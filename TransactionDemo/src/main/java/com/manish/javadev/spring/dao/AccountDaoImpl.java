@@ -16,7 +16,8 @@ import com.manish.javadev.spring.model.Account;
 @Repository
 public class AccountDaoImpl implements AccountDao {
 
-	private static final Logger logger = LoggerFactory.getLogger(AccountDaoImpl.class);
+	private static final Logger logger = LoggerFactory
+			.getLogger(AccountDaoImpl.class);
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -35,10 +36,11 @@ public class AccountDaoImpl implements AccountDao {
 
 	public void depositAmount(Long accountTo, Double amount) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Account account = (Account) session.load(Account.class, new Integer(1));
+		Account account = (Account) session.load(Account.class, new Integer(2));
 		account.setAmount(account.getAmount() + amount);
 		session.update(account);
 		logger.info("Account updated successfully, Account Details=" + account);
+		//throw new RuntimeException();
 
 	}
 
